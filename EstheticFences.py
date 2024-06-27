@@ -37,33 +37,18 @@ def degenerate(a,b,c):
 		return count[0] * count[1] * count[2]
 	else:
 		return 0
+#%%
 def esthetic_fences():
 	n = int(input())
-	red = []
-	blue = []
+	fences = []
 	for i in range(n):
-		ell = input().split(" ")
-		if ell[1] == 'r':
-			red.append((ell[0])+ell[1])
-		else:
-			blue.append(ell[0]+ell[1])
+		fences.append(input())
+	return fences
+'''The first line of input contains a single integer, n, the number of fence parts. This is followed by n lines
+ consisting of an integer length, l, for the fence part and either r or b indicating that the fence part is red or blue, respectively.					
+'''		
 
-
-	 
-	reds = list(powerset(red))[1:]
-	blues = list(powerset(blue))[1:]
-	cross = list((product(reds,blues)))
-	cross = [tuple(chain.from_iterable(x)) for x in cross]
-	triangles = set(filter(alternating,cross))
-
-	m = 0
-	for i in triangles:
-		ell = list(set_partitions(i,3))	
-		for triangle in ell:
-			c = degenerate(triangle[0],triangle[1],triangle[2])
-			m = max(c,m)
-	print(m)
-					
-			
 esthetic_fences()
 			
+
+# %%
